@@ -28,7 +28,7 @@ const registerUser = async ({ name, email, password, role }) => {
     verificationToken
   });
 
-  const verifyLink = `http://localhost:5000/api/auth/verify-email?token=${verificationToken}`;
+  const verifyLink = `https://kavindu.unisalpila.store/api/auth/verify-email?token=${verificationToken}`;
   await sendEmail(email, 'Verify your email', verifyLink);
 
   return user;
@@ -78,7 +78,7 @@ const initiatePasswordReset = async (email) => {
   user.resetPasswordExpires = Date.now() + 3600000; // 1 hour
   await user.save();
 
-  const resetLink = `http://localhost:5000/api/auth/reset-password?token=${resetToken}`;
+  const resetLink = `https://kavindu.unisalpila.store/api/auth/reset-password?token=${resetToken}`;
   await sendEmail(email, 'Reset your password', resetLink);
 };
 
